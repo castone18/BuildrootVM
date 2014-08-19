@@ -15,6 +15,7 @@ cd /home/tc
 /bin/su tc -c "/usr/bin/tce-load -wi rsync"
 /bin/su tc -c "/usr/bin/tce-load -wi python"
 /bin/su tc -c "/usr/bin/tce-load -wi bc"
+/bin/su tc -c "/usr/bin/tce-load -wi mktemp"
 
 /bin/su tc -c "git clone http://git.buildroot.net/git/buildroot.git"
 
