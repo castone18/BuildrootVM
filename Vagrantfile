@@ -6,7 +6,6 @@ Vagrant.configure("2") do |config|
 
   config.vagrant.host = :detect
 
-  config.vm.box_url = "https://github.com/castone18/BuildrootVM/BuildrootVM.box"
   config.vm.boot_timeout = 75
   config.vm.graceful_halt_timeout = 35
   config.vm.guest = :linux
@@ -16,12 +15,12 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |vb|
      #vb.gui = true
      #vb.customize ["modifyvm", :id, "--memory", "512"]
+     vb.customize ["modifyvm", :id, "--natpf1", "openvpn,udp,,11940,,1194"]
      vb.memory = 512
      vb.cpus = 1
   end
 
-  #config.vm.provision "shell", path: "https://github.com/castone18/BuildrootVM/provisioner.sh"
-  #config.vm.provision "shell", path: "provisioner.sh"
+  config.vm.provision "shell", path: "provisioner.sh"
 
   config.ssh.default.username = "tc"
   config.ssh.shell = "/bin/bash"
